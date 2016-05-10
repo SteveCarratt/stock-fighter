@@ -1,5 +1,5 @@
 defmodule Core do
-	def test() do
-		Socket.Web.connect "api.stockfighter.io", path: "ob/api/ws/BM83895836/venues/OIHAEX/tickertape"
+	def start(tradingaccount, venue) do
+		Socket.Web.connect "api.stockfighter.io", path: "/ob/api/ws/" <> tradingaccount <> "/venues/" <> venue <> "/executions", secure: true
 	end
 end

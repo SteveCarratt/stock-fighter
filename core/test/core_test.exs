@@ -3,6 +3,7 @@ defmodule CoreTest do
   doctest Core
 
   test "test" do
-	Core.test |> IO.inspect
+	{:ok, a} = Core.start "SIB62876667", "MLDEX"
+	IO.inspect a
   end
 end
