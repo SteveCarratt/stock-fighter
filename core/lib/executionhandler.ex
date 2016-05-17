@@ -1,14 +1,17 @@
 defmodule ExecutionHandler do
-	def loop(receive) do
+	def handle(receive) do
+		{:ok, file} = File.open "executions.log", [:write]
+		loop receive, file
+	end
+
+	defp loop(receive, file) do
 		message = receive.()
 		case message do
-			{ :text, _ } -> 
-				IO.puts "text"
-				loop receive
+			{ :text, message} -> 
+				IO.binwrite file, message
 			_ ->
-				IO.puts "unknown"
 				IO.inspect message
-				loop receive	
 		end
+		loop receive, file	
 	end 
 end
