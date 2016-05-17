@@ -8,7 +8,7 @@ defmodule ExecutionHandler do
 		message = receive.()
 		case message do
 			{ :text, message} -> 
-				IO.binwrite file, message
+				IO.binwrite file, (message <> "\n")
 			_ ->
 				IO.inspect message
 		end
