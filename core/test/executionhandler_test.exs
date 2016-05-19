@@ -3,6 +3,6 @@ defmodule ExecutionStreamTest do
   doctest ExecutionStream 
 
   test "handles execution" do
-	ExecutionHandler.handle fn -> {:text, "{ text: 'hello', execution: 'something' }"} end
+	ExecutionStream.start
   end
 end
